@@ -1,0 +1,18 @@
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<div class="col">
+  <article class="cartao-post">
+    <c:if test="${not empty p.imagem}">
+      <img class="capa" src="${pageContext.request.contextPath}/uploads/<c:out value='${p.imagem}'/>" alt="">
+    </c:if>
+    <div class="corpo">
+      <h2 class="h5 mb-0">
+        <a href="${pageContext.request.contextPath}/postagem?id=${p.id}"><c:out value="${p.titulo}"/></a>
+      </h2>
+      <div class="meta">
+        Por <c:out value="${p.autorNome}"/> em <fmt:formatDate value="${p.dataPublicacao}" pattern="dd/MM/yyyy"/>
+      </div>
+      <p class="resumo mb-0"><c:out value="${p.conteudo}"/></p>
+    </div>
+  </article>
+</div>

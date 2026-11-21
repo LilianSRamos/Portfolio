@@ -19,10 +19,6 @@ import model.Projeto;
 public class ProjetoController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    /*
-     * Mapa utilizado para associar as rotas às páginas JSP.
-     * Exemplo: /cadastroProjeto -> cadastroProjeto.jsp
-     */
     private final Map<String, String> rotas = new HashMap<>();
 
     public ProjetoController() {
@@ -56,21 +52,21 @@ public class ProjetoController extends HttpServlet {
                     criar(request);                       // CREATE
                     response.sendRedirect(request.getContextPath() + "/listaProjeto?msg=criado");
                 } else {
-                    encaminhar(request, response, rota);  // abre o formulário vazio
+                    encaminhar(request, response, rota);  
                 }
                 break;
 
-            case "/listaProjeto":                         // READ (lista)
+            case "/listaProjeto":                         // READ 
                 ArrayList<Projeto> lista = new CadastroProjetos().listarProjetos();
                 request.setAttribute("projetos", lista);
                 encaminhar(request, response, rota);
                 break;
 
-            case "/selecaoProjeto":                       // READ (um registro) -> abre a edição
+            case "/selecaoProjeto":                       // READ 
                 Projeto p = new Projeto();
                 p.setId(lerId(request));
                 p.buscaProjeto(p);
-                if (p.getTitulo() == null) {              // id não existe
+                if (p.getTitulo() == null) {              
                     response.sendRedirect(request.getContextPath() + "/listaProjeto?msg=naoencontrado");
                     return;
                 }
@@ -98,7 +94,7 @@ public class ProjetoController extends HttpServlet {
                 }
                 break;
 
-            default:                                      // /ProjetoController
+            default:                                    
                 response.sendRedirect(request.getContextPath() + "/listaProjeto");
             }
         } catch (SQLException e) {

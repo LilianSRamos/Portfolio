@@ -37,7 +37,7 @@ public class CadastroProjetos {
         }
     }
 
-    // READ (lista completa)
+    // READ 
     public ArrayList<Projeto> listarProjetos() throws SQLException {
         ArrayList<Projeto> lista = new ArrayList<>();
         String sql = "SELECT id, titulo, descricao, link, tecnologias, data_criacao FROM project ORDER BY id DESC";
@@ -57,7 +57,7 @@ public class CadastroProjetos {
         return lista;
     }
 
-    // READ (um registro): recebe um Projeto com o id e preenche os demais campos
+    // READ 
     public void selecionarProjeto(Projeto p) throws SQLException {
         String sql = "SELECT titulo, descricao, link, tecnologias, data_criacao FROM project WHERE id = ?";
         try (Connection con = conectar(); PreparedStatement ps = con.prepareStatement(sql)) {

@@ -4,7 +4,7 @@
   --tinta: #22333b;
   --tinta-suave: #5e503f;
   --linha: #eae0d5;
-  --destaque: #c6ac8f;
+  --destaque: #5e503f;
   --destaque-escuro: #5e503f;
   --perigo: #45050c;
 }
@@ -20,11 +20,11 @@ body {
   background: var(--tinta);
 }
 .barra .navbar-brand {
-  color: #fff;
+  color: #c6ac8f;
   font-weight: 600;
   letter-spacing: .2px;
 }
-.barra .nav-link { color: #cdd5df; }
+.barra .nav-link { color: #eae0d5; }
 .barra .nav-link:hover, .barra .nav-link.active { color: #fff; }
 
 .painel {
@@ -61,7 +61,7 @@ body {
 
 .etiqueta {
   display: inline-block;
-  background: #e5f1f1;
+  background: #eae0d5;
   color: var(--destaque-escuro);
   border-radius: 6px;
   padding: .1rem .5rem;
@@ -78,5 +78,14 @@ body {
 .form-label { font-weight: 600; }
 .form-control:focus {
   border-color: var(--destaque);
-  box-shadow: 0 0 0 .2rem rgba(15, 107, 107, .18);
+  box-shadow: 0 0 0 .2rem #22333B;
+}
+
+.painel .btn-outline-secondary {
+  color: var(--tinta);
+  border-color: var(--tinta);
+}
+.painel .btn-outline-secondary:hover {
+  background: var(--tinta);
+  color: #fff;
 }
