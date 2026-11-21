@@ -1,12 +1,12 @@
 :root {
-  --fundo: rgb(64, 0, 64);
-  --superficie: #ffffff;
-  --tinta: #1f2a37;
-  --tinta-suave: #5b6776;
+  --fundo: #eae0d5;
+  --superficie:#c6ac8f;
+  --tinta: #22333b;
+  --tinta-suave: #5e503f;
   --linha: #dde2e8;
-  --destaque: #0f6b6b;
-  --destaque-escuro: #0a4f4f;
-  --perigo: #b42318;
+  --destaque: #c6ac8f;
+  --destaque-escuro: #5e503f;
+  --perigo: #400406;
 }
 
 body {
