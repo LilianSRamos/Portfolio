@@ -1,6 +1,3 @@
-/* Complementos para a página inicial, postagens e rodapé.
-   Usa as variáveis do estilo.css; os valores depois da vírgula são reservas. */
-
 .logo { width: 30px; height: 30px; margin-right: .6rem; }
 
 .hero {
@@ -43,8 +40,6 @@
   gap: .4rem;
   flex: 1;
 }
-.cartao-post a { color: inherit; text-decoration: none; }
-.cartao-post a:hover { text-decoration: underline; }
 
 .meta { color: var(--tinta-suave, #5b6776); font-size: .875rem; }
 
