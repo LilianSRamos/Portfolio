@@ -67,4 +67,6 @@
   color: var(--tinta-suave, #5b6776);
   font-size: .875rem;
   padding: 1.25rem 0;
+  background: #c6ac8f;
+text-align: center;
 }

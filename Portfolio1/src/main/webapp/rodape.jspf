@@ -1,6 +1,6 @@
   </main>
   <footer class="rodape-site">
-    <div class="container">Meu PortfÃ³lio &copy; 2026. Projeto de ProgramaÃ§Ã£o 1, IFC Videira.</div>
+    <div class="container">Meu Portfólio &copy; 2026. Projeto de Programação 1, IFC Videira.</div>
   </footer>
   <script src="${pageContext.request.contextPath}/assets/js/bootstrap.bundle.min.js"></script>
 </body>
