@@ -12,15 +12,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-/**
- * Só deixa acessar as telas de gerenciamento quem estiver logado.
- * As telas públicas (/inicio, /postagens, /postagem, /login...) não passam por aqui.
- */
 @WebFilter(urlPatterns = {
-        // projetos
+      
         "/ProjetoController", "/cadastroProjeto", "/listaProjeto", "/editarProjeto", "/selecaoProjeto",
         "/excluirProjeto",
-        // postagens (gerenciar)
         "/minhasPostagens", "/cadastroPostagem", "/selecaoPostagem", "/editarPostagem", "/excluirPostagem" })
 public class AutenticacaoFilter implements Filter {
 

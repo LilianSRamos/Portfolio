@@ -23,7 +23,7 @@ public class UsuarioDAO {
         return DriverManager.getConnection(URL, USUARIO, SENHA);
     }
 
-    // CREATE: a senha já deve chegar como hash
+    // CREATE
     public void cadastrar(Usuario u) throws SQLException {
         String sql = "INSERT INTO usuario (nome, email, senha) VALUES (?, ?, ?)";
         try (Connection con = conectar(); PreparedStatement ps = con.prepareStatement(sql)) {
@@ -44,7 +44,7 @@ public class UsuarioDAO {
         }
     }
 
-    // READ: devolve o usuário (com o hash da senha) ou null se não existir
+    // READ
     public Usuario buscarPorEmail(String email) throws SQLException {
         String sql = "SELECT id, nome, email, senha FROM usuario WHERE email = ?";
         try (Connection con = conectar(); PreparedStatement ps = con.prepareStatement(sql)) {

@@ -12,13 +12,6 @@ import java.util.UUID;
 
 import jakarta.servlet.http.Part;
 
-/**
- * Guarda as imagens enviadas pelo usuário.
- *
- * As imagens ficam numa pasta FORA do projeto (C:\Users\SEU_USUARIO\portfolio-uploads),
- * assim elas não se perdem quando o Eclipse limpa ou republica o servidor.
- * O nome do arquivo é gerado com UUID, como no exemplo do repositório do professor.
- */
 public final class Arquivos {
 
     private static final Set<String> EXTENSOES = Set.of("png", "jpg", "jpeg", "gif", "webp");
@@ -30,17 +23,11 @@ public final class Arquivos {
         Files.createDirectories(pasta);
         return pasta;
     }
-
-    /** Só aceita nomes simples, sem barras nem "..". */
+    
     public static boolean nomeValido(String nome) {
         return nome != null && nome.matches("[A-Za-z0-9._-]{1,120}") && !nome.contains("..");
     }
 
-    /**
-     * Salva a imagem enviada e devolve o novo nome do arquivo.
-     * Devolve null se nenhum arquivo foi escolhido.
-     * Lança IllegalArgumentException se o arquivo não for uma imagem aceita.
-     */
     public static String salvarImagem(Part parte) throws IOException {
         if (parte == null || parte.getSize() == 0) {
             return null;
@@ -68,7 +55,6 @@ public final class Arquivos {
         try {
             Files.deleteIfExists(pasta().resolve(nome));
         } catch (IOException e) {
-            // se não deu para apagar o arquivo, o registro no banco continua válido
         }
     }
 }

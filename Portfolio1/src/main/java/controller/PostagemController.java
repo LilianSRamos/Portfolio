@@ -117,7 +117,7 @@ public class PostagemController extends HttpServlet {
         }
     }
 
-    // ---------- CREATE ----------
+    // CREATE
     private void criar(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, ServletException, IOException {
         Postagem p = lerCampos(request);
@@ -144,7 +144,7 @@ public class PostagemController extends HttpServlet {
         response.sendRedirect(request.getContextPath() + "/minhasPostagens?msg=criada");
     }
 
-    // ---------- UPDATE ----------
+    // UPDATE
     private void atualizar(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, ServletException, IOException {
         Postagem atual = dao.buscarPorId(lerId(request));
@@ -184,7 +184,6 @@ public class PostagemController extends HttpServlet {
         response.sendRedirect(request.getContextPath() + "/minhasPostagens?msg=atualizada");
     }
 
-    // ---------- apoio ----------
     private Postagem lerCampos(HttpServletRequest request) {
         Postagem p = new Postagem();
         p.setTitulo(texto(request, "titulo"));

@@ -6,13 +6,6 @@ import java.util.logging.Logger;
 
 import dao.CadastroProjetos;
 
-/*
- * O padrão MVC a ser implementado:
- * O pacote Model: representa dados relacionados às regras de negócio;
- * O pacote DAO: acessa e manipula os dados existentes na BD;
- * O pacote Controller: controla o fluxo das requisições e respostas;
- * As JSP: apresenta os dados.
- */
 public class Projeto {
 
     private int id;
@@ -41,7 +34,6 @@ public class Projeto {
         this.data_criacao = data_criacao;
     }
 
-    // Getters and Setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
@@ -59,8 +51,6 @@ public class Projeto {
 
     public String getData_criacao() { return data_criacao; }
     public void setData_criacao(String data_criacao) { this.data_criacao = data_criacao; }
-
-    // ---------- Operações (chamam o DAO) ----------
 
     public void cadastrarProjeto(Projeto projeto) throws SQLException {
         try {

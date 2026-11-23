@@ -12,7 +12,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import util.Arquivos;
 
-/** Entrega as imagens enviadas: /uploads/nome-do-arquivo.png */
 @WebServlet(name = "ArquivoController", urlPatterns = { "/uploads/*" })
 public class ArquivoController extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -28,7 +27,6 @@ public class ArquivoController extends HttpServlet {
             return;
         }
 
-        // 1) pasta de uploads fora do projeto; 2) assets/uploads do projeto (exemplo do repositório)
         Path arquivo = Arquivos.pasta().resolve(nome);
         if (!Files.isRegularFile(arquivo)) {
             String real = getServletContext().getRealPath("/assets/uploads/" + nome);

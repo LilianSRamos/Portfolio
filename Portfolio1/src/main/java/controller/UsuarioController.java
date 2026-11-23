@@ -35,7 +35,7 @@ public class UsuarioController extends HttpServlet {
             request.getRequestDispatcher("/cadastroUsuario.jsp").forward(request, response);
             break;
 
-        default: // /login
+        default: 
             if (logado(request)) {
                 response.sendRedirect(request.getContextPath() + "/inicio");
             } else {
@@ -68,7 +68,6 @@ public class UsuarioController extends HttpServlet {
 
         Usuario u = new UsuarioDAO().buscarPorEmail(email);
 
-        // A mesma mensagem para e-mail inexistente e senha errada
         if (u == null || !Senha.conferir(senha, u.getSenha())) {
             request.setAttribute("erro", "E-mail ou senha incorretos.");
             request.setAttribute("email", email);
@@ -76,8 +75,8 @@ public class UsuarioController extends HttpServlet {
             return;
         }
 
-        request.changeSessionId(); // evita fixação de sessão
-        u.setSenha(null);          // o hash não precisa ficar na sessão
+        request.changeSessionId(); 
+        u.setSenha(null);          
         request.getSession().setAttribute("usuarioLogado", u);
         response.sendRedirect(request.getContextPath() + "/inicio");
     }

@@ -13,7 +13,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Projeto;
 
-/** Página inicial pública: últimas postagens e projetos. */
 @WebServlet(name = "InicioController", urlPatterns = { "/inicio" })
 public class InicioController extends HttpServlet {
     private static final long serialVersionUID = 1L;

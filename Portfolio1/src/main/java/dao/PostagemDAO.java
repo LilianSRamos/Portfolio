@@ -54,7 +54,7 @@ public class PostagemDAO {
         }
     }
 
-    // READ: postagens publicadas (limite 0 = todas)
+    // READ
     public ArrayList<Postagem> listarPublicadas(int limite) throws SQLException {
         String sql = SELECT + "WHERE p.status = 'PUBLICADA' ORDER BY p.data_publicacao DESC, p.id DESC"
                 + (limite > 0 ? " LIMIT ?" : "");
@@ -72,7 +72,7 @@ public class PostagemDAO {
         return lista;
     }
 
-    // READ: todas as postagens de um autor (inclui rascunhos)
+    // READ
     public ArrayList<Postagem> listarPorAutor(int autorId) throws SQLException {
         String sql = SELECT + "WHERE p.autor_id = ? ORDER BY p.data_publicacao DESC, p.id DESC";
         ArrayList<Postagem> lista = new ArrayList<>();
@@ -87,7 +87,7 @@ public class PostagemDAO {
         return lista;
     }
 
-    // READ: uma postagem (ou null)
+    // READ
     public Postagem buscarPorId(int id) throws SQLException {
         String sql = SELECT + "WHERE p.id = ?";
         try (Connection con = conectar(); PreparedStatement ps = con.prepareStatement(sql)) {
@@ -98,7 +98,7 @@ public class PostagemDAO {
         }
     }
 
-    // UPDATE: só altera se a postagem for do autor informado
+    // UPDATE
     public boolean atualizar(Postagem p) throws SQLException {
         String sql = "UPDATE postagem SET titulo = ?, conteudo = ?, imagem = ?, status = ? WHERE id = ? AND autor_id = ?";
         try (Connection con = conectar(); PreparedStatement ps = con.prepareStatement(sql)) {
@@ -112,7 +112,7 @@ public class PostagemDAO {
         }
     }
 
-    // DELETE: só apaga se a postagem for do autor informado
+    // DELETE
     public boolean excluir(int id, int autorId) throws SQLException {
         String sql = "DELETE FROM postagem WHERE id = ? AND autor_id = ?";
         try (Connection con = conectar(); PreparedStatement ps = con.prepareStatement(sql)) {

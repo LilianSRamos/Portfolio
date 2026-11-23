@@ -8,10 +8,6 @@ import java.util.Base64;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
-/**
- * Guarda a senha como hash (PBKDF2 + salt), nunca em texto puro.
- * Formato salvo na coluna usuario.senha: iteracoes:salt:hash
- */
 public class Senha {
 
     private static final int ITERACOES = 120_000;
