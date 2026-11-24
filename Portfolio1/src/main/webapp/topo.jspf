@@ -38,26 +38,35 @@
 			<div class="collapse navbar-collapse" id="menu">
 				<ul class="navbar-nav ms-auto align-items-md-center">
 
-  <c:if test="${empty sessionScope.usuarioLogado}">
-    <li class="nav-item"><a class="nav-link" href="${raiz}/inicio">Início</a></li>
-  </c:if>
+					<c:if test="${empty sessionScope.usuarioLogado}">
+						<li class="nav-item"><a class="nav-link"
+							href="${raiz}/inicio">Início</a></li>
+					</c:if>
 
-  <li class="nav-item"><a class="nav-link" href="${raiz}/postagens">Postagens</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="${raiz}/postagens">Postagens</a></li>
 
-  <c:choose>
-    <c:when test="${not empty sessionScope.usuarioLogado}">
-      <li class="nav-item"><a class="nav-link" href="${raiz}/minhasPostagens">Minhas postagens</a></li>
-      <li class="nav-item"><a class="nav-link" href="${raiz}/listaProjeto">Projetos</a></li>
-      <li class="nav-item"><span class="navbar-text saudacao ms-md-3 me-md-2">Olá, <strong><c:out value="${sessionScope.usuarioLogado.nome}"/></strong></span></li>
-      <li class="nav-item"><a class="nav-link" href="${raiz}/logout">Sair</a></li>
-    </c:when>
-    <c:otherwise>
-      <li class="nav-item"><a class="nav-link" href="${raiz}/login">Entrar</a></li>
-      <li class="nav-item"><a class="nav-link" href="${raiz}/cadastroUsuario">Criar conta</a></li>
-    </c:otherwise>
-  </c:choose>
+					<c:choose>
+						<c:when test="${not empty sessionScope.usuarioLogado}">
+							<li class="nav-item"><a class="nav-link"
+								href="${raiz}/minhasPostagens">Minhas postagens</a></li>
+							<li class="nav-item"><a class="nav-link"
+								href="${raiz}/listaProjeto">Projetos</a></li>
+							<li class="nav-item"><span
+								class="navbar-text saudacao ms-md-3 me-md-2">Olá, <strong><c:out
+											value="${sessionScope.usuarioLogado.nome}" /></strong></span></li>
+							<li class="nav-item"><a class="nav-link"
+								href="${raiz}/logout">Sair</a></li>
+						</c:when>
+						<c:otherwise>
+							<li class="nav-item"><a class="nav-link"
+								href="${raiz}/login">Entrar</a></li>
+							<li class="nav-item"><a class="nav-link"
+								href="${raiz}/cadastroUsuario">Criar conta</a></li>
+						</c:otherwise>
+					</c:choose>
 
-</ul>
+				</ul>
 			</div>
 		</div>
 	</nav>
