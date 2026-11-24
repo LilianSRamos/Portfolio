@@ -11,6 +11,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.Projeto;
 
 @WebServlet(name = "InicioController", urlPatterns = { "/inicio" })
@@ -20,6 +21,13 @@ public class InicioController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+    	
+        HttpSession sessao = request.getSession(false);
+        if (sessao != null && sessao.getAttribute("usuarioLogado") != null) {
+            response.sendRedirect(request.getContextPath() + "/minhasPostagens");
+            return;
+        }
+
         try {
             request.setAttribute("postagens", new PostagemDAO().listarPublicadas(3));
 

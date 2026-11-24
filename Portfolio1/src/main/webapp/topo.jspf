@@ -1,45 +1,64 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <c:set var="raiz" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title><c:choose><c:when test="${empty tituloPagina}">Meu Portfólio</c:when><c:otherwise><c:out value="${tituloPagina}"/> | Meu Portfólio</c:otherwise></c:choose></title>
-  <link rel="stylesheet" href="${raiz}/assets/css/bootstrap.min.css">
-  <link rel="stylesheet" href="${raiz}/assets/css/estilo.css">
-  <link rel="stylesheet" href="${raiz}/assets/css/portfolio.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title><c:choose>
+		<c:when test="${empty tituloPagina}">Meu Portfólio</c:when>
+		<c:otherwise>
+			<c:out value="${tituloPagina}" /> | Meu Portfólio</c:otherwise>
+	</c:choose></title>
+<link rel="stylesheet" href="${raiz}/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="${raiz}/assets/css/estilo.css">
+<link rel="stylesheet" href="${raiz}/assets/css/portfolio.css">
 </head>
 <body>
-  <nav class="navbar navbar-expand-md barra mb-4">
-    <div class="container">
-      <a class="navbar-brand d-flex align-items-center" href="${raiz}/inicio">
-        <img class="logo" src="${raiz}/assets/img/cursos.png" alt="" onerror="this.style.display='none'">
-        Meu Portfólio
-      </a>
-      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#menu"
-              aria-controls="menu" aria-expanded="false" aria-label="Abrir menu">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="menu">
-        <ul class="navbar-nav ms-auto align-items-md-center">
-          <li class="nav-item"><a class="nav-link" href="${raiz}/inicio">Início</a></li>
-          <li class="nav-item"><a class="nav-link" href="${raiz}/postagens">Postagens</a></li>
-          <c:choose>
-            <c:when test="${not empty sessionScope.usuarioLogado}">
-              <li class="nav-item"><a class="nav-link" href="${raiz}/minhasPostagens">Minhas postagens</a></li>
-              <li class="nav-item"><a class="nav-link" href="${raiz}/listaProjeto">Projetos</a></li>
-              <li class="nav-item"><span class="navbar-text saudacao ms-md-3 me-md-2">Olá, <strong><c:out value="${sessionScope.usuarioLogado.nome}"/></strong></span></li>
-              <li class="nav-item"><a class="nav-link" href="${raiz}/logout">Sair</a></li>
-            </c:when>
-            <c:otherwise>
-              <li class="nav-item"><a class="nav-link" href="${raiz}/login">Entrar</a></li>
-              <li class="nav-item"><a class="nav-link" href="${raiz}/cadastroUsuario">Criar conta</a></li>
-            </c:otherwise>
-          </c:choose>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <main class="container pb-5">
+	<nav class="navbar navbar-expand-md barra mb-4">
+		<div class="container">
+			<c:choose>
+				<c:when test="${not empty sessionScope.usuarioLogado}">
+					<c:set var="linkMarca" value="${raiz}/minhasPostagens" />
+				</c:when>
+				<c:otherwise>
+					<c:set var="linkMarca" value="${raiz}/inicio" />
+				</c:otherwise>
+			</c:choose>
+			<a class="navbar-brand d-flex align-items-center" href="${linkMarca}">
+				<img class="logo" src="${raiz}/assets/img/cursos.png" alt=""
+				onerror="this.style.display='none'"> Meu Portfólio
+			</a>
+			<button class="navbar-toggler border-0" type="button"
+				data-bs-toggle="collapse" data-bs-target="#menu"
+				aria-controls="menu" aria-expanded="false" aria-label="Abrir menu">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="menu">
+				<ul class="navbar-nav ms-auto align-items-md-center">
+
+  <c:if test="${empty sessionScope.usuarioLogado}">
+    <li class="nav-item"><a class="nav-link" href="${raiz}/inicio">Início</a></li>
+  </c:if>
+
+  <li class="nav-item"><a class="nav-link" href="${raiz}/postagens">Postagens</a></li>
+
+  <c:choose>
+    <c:when test="${not empty sessionScope.usuarioLogado}">
+      <li class="nav-item"><a class="nav-link" href="${raiz}/minhasPostagens">Minhas postagens</a></li>
+      <li class="nav-item"><a class="nav-link" href="${raiz}/listaProjeto">Projetos</a></li>
+      <li class="nav-item"><span class="navbar-text saudacao ms-md-3 me-md-2">Olá, <strong><c:out value="${sessionScope.usuarioLogado.nome}"/></strong></span></li>
+      <li class="nav-item"><a class="nav-link" href="${raiz}/logout">Sair</a></li>
+    </c:when>
+    <c:otherwise>
+      <li class="nav-item"><a class="nav-link" href="${raiz}/login">Entrar</a></li>
+      <li class="nav-item"><a class="nav-link" href="${raiz}/cadastroUsuario">Criar conta</a></li>
+    </c:otherwise>
+  </c:choose>
+
+</ul>
+			</div>
+		</div>
+	</nav>
+	<main class="container pb-5">

@@ -35,9 +35,9 @@ public class UsuarioController extends HttpServlet {
             request.getRequestDispatcher("/cadastroUsuario.jsp").forward(request, response);
             break;
 
-        default: 
+        default: // /login
             if (logado(request)) {
-                response.sendRedirect(request.getContextPath() + "/inicio");
+                response.sendRedirect(request.getContextPath() + "/minhasPostagens");
             } else {
                 request.getRequestDispatcher("/login.jsp").forward(request, response);
             }
@@ -78,7 +78,7 @@ public class UsuarioController extends HttpServlet {
         request.changeSessionId(); 
         u.setSenha(null);          
         request.getSession().setAttribute("usuarioLogado", u);
-        response.sendRedirect(request.getContextPath() + "/inicio");
+        response.sendRedirect(request.getContextPath() + "/minhasPostagens");
     }
 
     private void cadastrar(HttpServletRequest request, HttpServletResponse response)
