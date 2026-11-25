@@ -42,4 +42,18 @@
   </form>
 </div>
 
+<script>
+  (function () {
+    var campo = document.getElementById('imagem');
+    var tipos = ['image/png', 'image/jpeg', 'image/gif', 'image/webp'];
+    campo.addEventListener('change', function () {
+      var f = campo.files[0];
+      if (f && (tipos.indexOf(f.type) === -1 || f.size > 5 * 1024 * 1024)) {
+        alert('Escolha uma imagem PNG, JPG, GIF ou WEBP de até 5 MB.');
+        campo.value = '';
+      }
+    });
+  })();
+</script>
+
 <%@ include file="/rodape.jspf" %>

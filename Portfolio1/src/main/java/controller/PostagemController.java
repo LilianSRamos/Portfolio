@@ -126,6 +126,7 @@ public class PostagemController extends HttpServlet {
 
         if (erro == null) {
             try {
+                // imagem opcional, mas se enviada precisa ser uma imagem válida
                 imagem = Arquivos.salvarImagem(request.getPart("imagem"));
             } catch (IllegalArgumentException e) {
                 erro = e.getMessage();
